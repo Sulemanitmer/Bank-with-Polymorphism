@@ -3,8 +3,7 @@ Incorporating Polymorphism in Bank Accounts.
 
 # Bank Accounts
 There will be two types of Bank Accounts: 
-Saving Account
-Checking Account
+Saving Account and Checking Account
 
 By using polymorphism I will be able to call the Saving and Checkings methods from Bank Accounts. 
 
