@@ -1,0 +1,66 @@
+// Suleman Itmer
+// ID:-3107729
+// Class:- COSC-2436-81501
+// Lab 2 - Account_Itmer.java
+// It has account info for part 2
+
+public class Account_Itmer 
+{
+	// Main Var
+	protected String accountNumber;
+	protected String customerFirstName ;
+	protected String customerLastName ;
+	protected double address ;
+	protected double balance;
+	
+	//----------------------------------------------------->
+	//New Accounts 
+	public void Account(String accountNum, String firstName, String lastName, double location, double money)
+	{
+		accountNumber = accountNum;
+		customerFirstName = firstName;
+		customerLastName = lastName;
+		address = location; 
+		balance = money;
+	}
+	
+	//----------------------------------------------------->
+	//printers
+	public void openAccount()
+	{
+	System.out.println(	"\n" + "Account Name: " + customerFirstName + ", " + customerLastName + 
+			"\n" + "Account Number: " + accountNumber + 
+			"\n" + "Current Balance: "  + balance );
+	}
+	
+	public void checkBalance()
+	{
+		System.out.println("Account Name: " + customerFirstName + ", " + customerLastName +
+				"\n" + "Account Number: " + accountNumber +
+				"\n" + "Current Balance: " + balance);
+	  
+	}
+	public void deposit(double amount)
+	{
+		balance+=amount;
+		System.out.println("Account Name: " + customerFirstName + ", " + customerLastName +
+				"\n" + "Account Number: " + accountNumber +
+				"\n" + "Deposit Amount: " + amount +
+				"\n" + "New Balance: " + balance);
+	}
+	public void withdraw(double amount)
+	{
+			balance-=amount;
+			System.out.println("Account Name: " + customerFirstName + ", " + customerLastName +
+					"\n" + "Account Number: " + accountNumber +
+					"\n" + "Withdrawn Amount: " + amount +
+					"\n" + "New Balance: " + balance);
+	
+	}
+	public void printMonthlyStatement()
+	{
+		System.out.println("Account Name: " + customerFirstName + ", " + customerLastName +
+			"\n" + "Account Number: " + accountNumber +
+	        "\n" + "End Balance: "+ balance);
+	}
+}
