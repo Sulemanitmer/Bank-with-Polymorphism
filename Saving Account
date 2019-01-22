@@ -1,0 +1,67 @@
+
+public class SavingAccount_Itmer extends Account_Itmer 
+{
+	// Main Var
+	private double interestRate;
+	private double interAmount; 
+	
+	//----------------------------------------------------->
+	//New Accounts 
+	public void SavingAccount(String accountNum, String firstName, String lastName, double location, double money,double inter)
+	{
+		super.Account(accountNum ,firstName, lastName , location, money);
+		interestRate = inter;
+	}
+	
+	//----------------------------------------------------->
+	//printers
+	public void openAccount()
+	{ 
+		System.out.println("Account Type: Saving Account");
+		super.openAccount();
+	}
+	public void checkBalance()
+	{
+		System.out.println("Account Type: Saving Account");
+		super.checkBalance();
+	}
+	public void deposit(double amount)
+	{
+		System.out.println("Account Type: Saving Account");
+		super.deposit(amount);
+	}
+	public void withdraw(double amount)
+	{
+		if ( amount < balance - 50  )
+		{
+			System.out.println("Account Type: Saving Account");
+			super.withdraw(amount);
+		}
+		else
+		{
+			System.out.println("Account Name: " + customerFirstName + ", " + customerLastName +
+					"\n" + "Account Number: " + accountNumber +
+					"\n" + "Withdrawn Amount: " + amount + " - " + "denied" +
+					"\n" + "New Balance: " + balance);
+		}
+	}
+	public void printMonthlyStatement()
+	{
+		calculateInterest();
+		calculateInterestAmount();
+		System.out.println("Account Type: Saving Account" +
+				"\n" + "Interest Rate: " + interestRate +
+				"\n" + "Interest amount: "  + interAmount);
+		
+		super.printMonthlyStatement();
+	}
+	
+	public void calculateInterestAmount()
+	{
+		interAmount = super.balance * interestRate * 0.01;
+	}
+	public void calculateInterest()
+	{
+		super.balance += super.balance * interestRate * 0.01;
+	}
+}
