@@ -11,9 +11,13 @@ By using polymorphism I will be able to call the Saving and Checkings methods fr
 This program will provide services to the user in case he wants to do any of the following:
 
 Open new account
+
 Check current balance
+
 Deposit
+
 Withdraw
+
 Print monthly statement
 
 # Executable From Eclipse
