@@ -1,0 +1,60 @@
+
+public class CheckingAccount_Itmer extends Account_Itmer
+{
+	// Main Var
+	private double serviceFee;
+	
+	//----------------------------------------------------->
+	//New Accounts 
+
+	public void CheckingAccount(String accountNum, String firstName, String lastName, double location, double money , double fee)
+	{
+		super.Account( accountNum ,firstName, lastName , location,  money);
+		serviceFee = fee;
+	}
+	
+	//----------------------------------------------------->
+	//printers
+	public void openAccount()
+	{ 
+		System.out.println("Account Type: Checking Account");
+		super.openAccount();
+	}
+	public void checkBal()
+	{
+		System.out.println("Account Type: Checking Account");
+		super.checkBalance();
+	}
+	public void deposit(double amount)
+	{
+		System.out.println("Account Type: Checking Account");
+		super.deposit(amount);
+	}
+	public void withdraw(double amount)
+	{
+		if( amount < balance - 20)
+		{
+			System.out.println("Account Type: Checking Account");
+			super.withdraw(amount);
+		}
+		else
+		{
+			System.out.println("Account Name: " + customerFirstName + ", " + customerLastName +
+					"\n" + "Account Number: " + accountNumber +
+					"\n" + "Withdrawn Amount: " + amount + " - " + "denied" +
+					"\n" + "New Balance: " + balance);
+		}
+	}
+	public void printMonthlyStatement()
+	{
+		calculateFee();
+		System.out.println("Account Type: Checking Account" +
+				"\n" + "Service Fee " + serviceFee);
+		super.printMonthlyStatement();
+	}
+	
+	public void calculateFee()
+	{
+		super.balance -= serviceFee;
+	}
+}
