@@ -1,0 +1,205 @@
+// Suleman Itmer
+// Bank services  
+
+import java.util.Scanner;
+
+public class BankService_Itmer
+{
+	public static void main(String[] s)
+	{
+		Scanner keyboard = new Scanner(System.in);
+		
+		//----------------------------------------------------------------------->
+		// main Var
+		int mainMenu;
+		boolean  count = true;
+		
+		//----------------------------------------------------------------------->
+		// putting mainaccount to null
+		Account_Itmer mainAccount = null;//new Account_Itmer2();
+		
+		//----------------------------------------------------------------------->
+		// until 0 is hit count will not turn false
+		while(count)
+		{
+			
+		//----------------------------------------------------------------------->
+		//main menu
+			System.out.println("\n" + "MAIN MENU" + 
+					"\n" + "1. Open new account" +
+					"\n" + "2. Check current balance" +
+					"\n" + "3. Deposit" +
+					"\n" + "4. Withdraw" +
+					"\n" + "5. Print monthly statement" +
+					"\n" + "0. Exit");
+			
+			mainMenu = keyboard.nextInt();
+			
+		//----------------------------------------------------------------------->
+		// main menu selection picked
+			switch(mainMenu)
+			{
+				case 1:
+				{
+					
+		//----------------------------------------------------------------------->
+		//new account var
+					String firstName;
+					String lastName;
+					String accountNum;
+					double balance;
+					double location;
+					int accountType;
+					
+		//----------------------------------------------------------------------->
+		//selection of account
+					// new account input
+					System.out.println("Enter first Name: ");
+					firstName = keyboard.next();
+					System.out.println("Enter last Name: ");
+					lastName = keyboard.next();
+					System.out.println("Enter your zipcode: ");
+					location = keyboard.nextDouble();
+					System.out.println("Enter Account Number: ");
+					accountNum = keyboard.next();
+					System.out.println("Enter Balance: ");
+					balance = keyboard.nextDouble();
+					
+					System.out.println("1. Checking Account" +
+								"\n" + "2. Saving Account:");
+					accountType=keyboard.nextInt();
+					
+		//----------------------------------------------------------------------->
+		//account type vars and differences
+					switch(accountType)
+					{
+	  
+						case 1:
+						{
+							
+							double fee;
+							
+							System.out.println("Enter Service Fee: ");
+							fee = keyboard.nextDouble();
+							
+							//Checking account condition if under 20 it bring up menu again after displaying insufficient
+							if(balance>=20)
+							{
+								mainAccount = new CheckingAccount_Itmer();
+								((CheckingAccount_Itmer) mainAccount).CheckingAccount(accountNum,firstName, lastName, location, balance,fee);
+								mainAccount.openAccount();
+							}
+							else
+							{
+								System.out.println("Invalid open account amount");
+							}
+							break;
+						}
+						
+						case 2:
+						{
+							
+							double inter;
+							
+							System.out.println("Enter interest rate: ");
+							inter=keyboard.nextDouble();
+							
+							//Saving account condition
+							if(balance>50)
+							{
+								mainAccount = new SavingAccount_Itmer();
+								((SavingAccount_Itmer) mainAccount).SavingAccount(accountNum, firstName, lastName, location, balance,inter);
+								mainAccount.openAccount();
+							
+							}
+							
+							else
+							{
+								System.out.println("Invalid open account amount");
+							}
+							break;
+						}
+					}
+					break;
+				}
+				
+		//----------------------------------------------------------------------->
+		// we should have an account before any other case ( check if account not null)
+		// these cases should aline with the mainmenu
+				case 2:
+				{	
+					if(mainAccount != null)
+					{
+						mainAccount.checkBalance();
+					}
+					else
+						System.out.println("You have to open account before selecting this task");
+					break;
+				}
+				
+				case 3:
+				{
+					if(mainAccount != null)
+					{
+							double amount;
+							
+							System.out.println("Enter Amount to Deposit: ");
+							amount = keyboard.nextDouble();
+							
+							mainAccount.deposit(amount);
+					}
+					else
+					{
+						System.out.println("You have to open account before selecting this task");
+					}
+					break;
+				}
+				
+				case 4:
+				{
+					if(mainAccount != null)
+					{
+						double amount;
+						
+						System.out.println("Enter Amount to Withdraw: ");
+						amount = keyboard.nextDouble();
+						
+						mainAccount.withdraw(amount);
+					}
+					else
+					{
+						System.out.println("You have to open account before selecting this task");
+					}
+					break;
+				}
+				
+				case 5:
+				{
+					if(mainAccount != null)
+					{
+						mainAccount.printMonthlyStatement();
+					}
+					else
+					{
+						System.out.println("You have to open account before selecting this task");
+					}
+					break;
+				}
+				
+				case 0:
+				{
+					System.out.println("Thank you. The application is terminating.");
+					
+					count=false;
+					
+					break;
+				}
+				
+		//----------------------------------------------------------------------->
+		// any other value other then 0-5 will say input wrong
+				default: System.out.println("Wrong Input");
+			}
+		}
+	}
+}
+
