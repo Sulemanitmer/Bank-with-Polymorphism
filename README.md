@@ -1,6 +1,8 @@
 # Bank-with-Polymorphism
 Incorporating Polymorphism in Bank Accounts.
 
+Understanding Polymorphism
+
 # Bank Accounts
 There will be two types of Bank Accounts: 
 Saving Account and Checking Account
