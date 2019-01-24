@@ -1,7 +1,11 @@
 # Bank-with-Polymorphism
 Incorporating Polymorphism in Bank Accounts.
 
-Understanding Polymorphism
+This code will join my Account code with saving account and checking account through polymorphism. 
+
+purpose of this code is to help me understand how polymorphism works.
+
+project is Completed
 
 # Bank Accounts
 There will be two types of Bank Accounts: 
